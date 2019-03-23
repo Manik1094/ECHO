@@ -138,9 +138,13 @@ Serial.println(" | AcZ = "); Serial.println(AcZ);
 
 
  
-delay(2000); // Wait 0.5 seconds and scan again
+delay(500);
 
-   
+      if ( AcZ<-100&& AcX<-10000&&data > 130 && data1 > 130 && data2 > 130 && data3 > 130 && data4 > 130)
+  { ch = "THANK YOU";
+    String name = Firebase.pushString("logs", ch);
+    delay(2000);
+  } 
       if (  AcY<-8000&&data > 130 && data1 > 130 && data2 > 130 && data3 > 130 && data4 > 130)
   { ch = ".";
     String name = Firebase.pushString("logs", ch);
