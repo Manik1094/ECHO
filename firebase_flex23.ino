@@ -186,7 +186,7 @@ delay(2000); // Wait 0.5 seconds and scan again
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-   else if ( AcY<-8000&& data < 140 && data1 < 120 && data2 > 120 && data3 > 120 && data4 > 120)
+   else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 > 120 && data3 > 120 && data4 > 120)
   { ch = "H";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
@@ -201,12 +201,12 @@ delay(2000); // Wait 0.5 seconds and scan again
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-    else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 > 120 && data3 > 120 && data4 > 120)
-  { ch = "K";
-    String name = Firebase.pushString("logs", ch);
-    delay(2000);
-  }
-    else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 > 120 && data4 > 120)
+//    else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 > 120 && data3 > 120 && data4 > 120)
+//  { ch = "K";
+//    String name = Firebase.pushString("logs", ch);
+//    delay(2000);
+//  }
+  else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 > 120 && data4 > 120)
   { ch = "L";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
