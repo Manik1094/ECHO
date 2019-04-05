@@ -142,6 +142,21 @@ delay(500);
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
+     if (  AcY>9000&&data < 130 && data1 < 130 && data2 < 130 && data3 > 130 && data4 < 130)
+  { ch = "WE ARE";
+    String name = Firebase.pushString("logs", ch);
+    delay(2000);
+  }
+   else if ( AcY<-8000&& data < 140 && data1 < 120 && data2 > 120 && data3 > 120 && data4 < 120)
+  { ch = "TEAM PI";
+    String name = Firebase.pushString("logs", ch);
+    delay(2000);
+  }
+      if (  AcY>9000&&data > 130 && data1 < 130 && data2 < 130 && data3 > 130 && data4 > 130)
+  { ch = "LETS ROCK";
+    String name = Firebase.pushString("logs", ch);
+    delay(2000);
+  }
 //  else if (  AcY<-8000&&data < 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 > 120)
 //  { ch = "#";
 //    String name = Firebase.pushString("logs", ch);
@@ -162,12 +177,12 @@ delay(500);
     String name = Firebase.pushString("logs", ch);
     delay(2000);
 }
-    else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 > 120 && data4 < 120)
+    else if ( AcY<9000&&AcY>-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 > 120 && data4 < 120)
   { ch = "D";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-   else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 < 120)
+   else if (AcY<9000&& AcY>-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 < 120)
   { ch = "E";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
