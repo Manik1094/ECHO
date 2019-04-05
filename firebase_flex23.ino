@@ -163,7 +163,7 @@ delay(500);
     String name = Firebase.pushString("logs", ch);
     delay(1500);}
     
-      if (  AcY>9000&&data > 130 && data1 > 130 && data2 > 130 && data3 > 130 && data4 > 130)
+      if (  AcY>11000&&data > 130 && data1 > 130 && data2 > 130 && data3 > 130 && data4 > 130)
   { ch = "HELLO";
     String name = Firebase.pushString("logs", ch);
    
