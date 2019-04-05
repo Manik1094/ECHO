@@ -1,27 +1,3 @@
-
-/*
-  ESP8266 4051 Multiplexer by Brian Lough
-
-  An example showing how to use a 4051 multiplexer with an esp8266
-  to connect up to 8 analog sensors.
-  Wiring:
-  Wemos ->  4051
-  ---------------
-  D5   ->   S0 (A)
-  D6    ->   S1 (B)
-  D7    ->   S2 (C)
-  A0    ->   Common
-  3.3v  ->   VCC
-  G     ->   GND
-  G     ->   Inhibit
-  G     ->   VEE
-
-  4051 Option pins are then wired to whatever Analog sensors required
-  One thing to note: say for example if you only require 2 analog sensors,
-  You can just wire up S0(A) and connect S1 & S2 to GND and you will be
-  able to switch between option 1 and option 2 pins.
-  Same goes for up to 4 pins (just use S0 & S1)
-*/
 #include <ESP8266WiFi.h>
 #define MUX_A D5
 #define MUX_B D6
