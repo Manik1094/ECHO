@@ -1,27 +1,4 @@
 
-/*
-  ESP8266 4051 Multiplexer by Brian Lough
-
-  An example showing how to use a 4051 multiplexer with an esp8266
-  to connect up to 8 analog sensors.
-  Wiring:
-  Wemos ->  4051
-  ---------------
-  D5   ->   S0 (A)
-  D6    ->   S1 (B)
-  D7    ->   S2 (C)
-  A0    ->   Common
-  3.3v  ->   VCC
-  G     ->   GND
-  G     ->   Inhibit
-  G     ->   VEE
-
-  4051 Option pins are then wired to whatever Analog sensors required
-  One thing to note: say for example if you only require 2 analog sensors,
-  You can just wire up S0(A) and connect S1 & S2 to GND and you will be
-  able to switch between option 1 and option 2 pins.
-  Same goes for up to 4 pins (just use S0 & S1)
-*/
 #include <ESP8266WiFi.h>
 #define MUX_A D5
 #define MUX_B D6
@@ -140,7 +117,17 @@ Serial.println(" | AcZ = "); Serial.println(AcZ);
  
 delay(500);
 
-      if ( AcZ<-100&& AcX<-10000&&data > 130 && data1 > 130 && data2 > 130 && data3 > 130 && data4 > 130)
+      if (  AcZ<10000&&data < 140 && data1 < 120 && data2 < 120 && data3 <120 && data4 > 120)
+  { ch = "ME";
+    String name = Firebase.pushString("logs", ch);
+    delay(2000);
+  } 
+    else if ( AcY>9000&&AcZ<-2000&&data > 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 < 120)
+  { ch = "I WANT TO PEE";
+    String name = Firebase.pushString("logs", ch);
+    delay(2000);
+  }
+     if (  AcX<-10000&&data > 140 && data1 > 130 && data2 > 130 && data3 > 130 && data4 > 130)
   { ch = "THANK YOU";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
@@ -148,14 +135,19 @@ delay(500);
       if (  AcY<-8000&&data > 130 && data1 > 130 && data2 > 130 && data3 > 130 && data4 > 130)
   { ch = ".";
     String name = Firebase.pushString("logs", ch);
-    delay(2000);
-  }
-  else if (  AcY<-8000&&data < 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 > 120)
-  { ch = "#";
+    delay(2000);}
+    
+      if (  AcY>9000&&data > 130 && data1 > 130 && data2 > 130 && data3 > 130 && data4 > 130)
+  { ch = "STOP";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-  else if (  AcY>-8000&&data < 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 > 120)
+//  else if (  AcY<-8000&&data < 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 > 120)
+//  { ch = "#";
+//    String name = Firebase.pushString("logs", ch);
+//    delay(2000);
+//  }
+  else if (  AcZ>-8000&&AcY>-8000&&data < 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 > 120)
   { ch = "A";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
@@ -165,11 +157,11 @@ delay(500);
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-//    else if ( AcY>-8000&& data > 100 && data < 130 && data1 > 100 && data1 < 130&& data2 > 100 && data2 < 130 && data3 > 100 && data3 < 130&& data4 > 100&& data4 < 130)
-//  { ch = "C";
-//    String name = Firebase.pushString("logs", ch);
-//    delay(2000);
-//  }
+    else if ( AcY>-8000&& data > 100 && data < 130 && data1 > 100 && data1 < 130&& data2 > 100 && data2 < 130 && data3 > 100 && data3 < 130&& data4 > 100&& data4 < 130)
+  { ch = "C";
+    String name = Firebase.pushString("logs", ch);
+    delay(2000);
+}
     else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 > 120 && data4 < 120)
   { ch = "D";
     String name = Firebase.pushString("logs", ch);
@@ -190,12 +182,12 @@ delay(500);
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-   else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 > 120 && data3 > 120 && data4 > 120)
+   else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 > 120 && data3 > 120 && data4 < 120)
   { ch = "H";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-   else if ( AcY>-8000&& data > 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 < 120)
+   else if ( AcZ>-2000&&AcY>-8000&& data > 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 < 120)
   { ch = "I";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
@@ -205,12 +197,12 @@ delay(500);
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-//    else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 > 120 && data3 > 120 && data4 > 120)
-//  { ch = "K";
-//    String name = Firebase.pushString("logs", ch);
-//    delay(2000);
-//  }
-  else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 > 120 && data4 > 120)
+    else if ( AcY>-8000&& data < 140 && data1 < 120 && data2 > 120 && data3 > 120 && data4 > 120)
+  { ch = "K";
+    String name = Firebase.pushString("logs", ch);
+    delay(2000);
+  }
+  else if ( AcZ>-8000&&AcY>-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 > 120 && data4 > 120)
   { ch = "L";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
@@ -220,7 +212,7 @@ delay(500);
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-    else if ( AcY<-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 > 120)
+    else if ( AcZ>-8000&&AcY<-8000&& data < 140 && data1 < 120 && data2 < 120 && data3 < 120 && data4 > 120)
   { ch = "N";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
@@ -240,7 +232,7 @@ delay(500);
     String name = Firebase.pushString("logs", ch);
     delay(2000);
   }
-   else if ( AcY>-8000&& data < 150 && data1 < 150 && data2 > 150 && data3 > 150 && data4 < 150)
+   else if ( AcY<-8000&& data < 150 && data1 < 150 && data2 > 150 && data3 > 150 && data4 < 150)
   { ch = "R";
     String name = Firebase.pushString("logs", ch);
     delay(2000);
